@@ -44,8 +44,6 @@ defimpl Poison.Decoder, for: GoogleApi.Speech.V1.Model.Operation do
   def decode(value, options) do
     value
     |> deserialize(:"error", :struct, GoogleApi.Speech.V1.Model.Status, options)
-    |> deserialize(:"metadata", :struct, GoogleApi.Speech.V1.Model.Object, options)
-    |> deserialize(:"response", :struct, GoogleApi.Speech.V1.Model.Object, options)
   end
 end
 
