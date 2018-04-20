@@ -17,29 +17,28 @@
 # https://github.com/swagger-api/swagger-codegen.git
 # Do not edit the class manually.
 
-defmodule GoogleApi.Speech.V1.Model.RecognizeResponse do
+defmodule GoogleApi.Speech.V1.Model.GoogleDataCollectionConfig do
   @moduledoc """
-  The only message returned to the client by the &#x60;Recognize&#x60; method. It contains the result as zero or more sequential &#x60;SpeechRecognitionResult&#x60; messages.
+  Google data collection opt-in settings.
 
   ## Attributes
 
-  - results ([SpeechRecognitionResult]): Output only. Sequential list of transcription results corresponding to sequential portions of audio. Defaults to: `null`.
+  - loggingConsentState (String.t):  Defaults to: `null`.
+    - Enum - one of [ENABLED, DISABLED]
   """
 
   defstruct [
-    :"results"
+    :"loggingConsentState"
   ]
 end
 
-defimpl Poison.Decoder, for: GoogleApi.Speech.V1.Model.RecognizeResponse do
-  import GoogleApi.Speech.V1.Deserializer
-  def decode(value, options) do
+defimpl Poison.Decoder, for: GoogleApi.Speech.V1.Model.GoogleDataCollectionConfig do
+  def decode(value, _options) do
     value
-    |> deserialize(:"results", :list, GoogleApi.Speech.V1.Model.SpeechRecognitionResult, options)
   end
 end
 
-defimpl Poison.Encoder, for: GoogleApi.Speech.V1.Model.RecognizeResponse do
+defimpl Poison.Encoder, for: GoogleApi.Speech.V1.Model.GoogleDataCollectionConfig do
   def encode(value, options) do
     GoogleApi.Speech.V1.Deserializer.serialize_non_nil(value, options)
   end

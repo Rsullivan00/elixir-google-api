@@ -27,138 +27,26 @@ defmodule GoogleApi.Speech.V1.Api.Operations do
 
 
   @doc """
-  Starts asynchronous cancellation on a long-running operation.  The server makes a best effort to cancel the operation, but success is not guaranteed.  If the server doesn&#39;t support this method, it returns &#x60;google.rpc.Code.UNIMPLEMENTED&#x60;.  Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to &#x60;Code.CANCELLED&#x60;.
-
-  ## Parameters
-
-  - connection (GoogleApi.Speech.V1.Connection): Connection to server
-  - name (String): The name of the operation resource to be cancelled.
-  - opts (KeywordList): [optional] Optional parameters
-    - :upload_protocol (String): Upload protocol for media (e.g. \&quot;raw\&quot;, \&quot;multipart\&quot;).
-    - :pretty_print (Boolean): Returns response with indentations and line breaks.
-    - :fields (String): Selector specifying which fields to include in a partial response.
-    - :upload_type (String): Legacy upload protocol for media (e.g. \&quot;media\&quot;, \&quot;multipart\&quot;).
-    - :__/xgafv (String): V1 error format.
-    - :callback (String): JSONP
-    - :alt (String): Data format for response.
-    - :key (String): API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
-    - :access_token (String): OAuth access token.
-    - :quota_user (String): Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
-    - :pp (Boolean): Pretty-print response.
-    - :bearer_token (String): OAuth bearer token.
-    - :oauth_token (String): OAuth 2.0 token for the current user.
-    - :body (CancelOperationRequest): 
-
-  ## Returns
-
-  {:ok, %GoogleApi.Speech.V1.Model.Empty{}} on success
-  {:error, info} on failure
-  """
-  @spec speech_operations_cancel(Tesla.Env.client, String.t, keyword()) :: {:ok, GoogleApi.Speech.V1.Model.Empty.t} | {:error, Tesla.Env.t}
-  def speech_operations_cancel(connection, name, opts \\ []) do
-    optional_params = %{
-      :"upload_protocol" => :query,
-      :"prettyPrint" => :query,
-      :"fields" => :query,
-      :"uploadType" => :query,
-      :"$.xgafv" => :query,
-      :"callback" => :query,
-      :"alt" => :query,
-      :"key" => :query,
-      :"access_token" => :query,
-      :"quotaUser" => :query,
-      :"pp" => :query,
-      :"bearer_token" => :query,
-      :"oauth_token" => :query,
-      :"body" => :body
-    }
-    %{}
-    |> method(:post)
-    |> url("/v1/operations/{+name}:cancel", %{
-         "name" => URI.encode_www_form(name)
-       })
-    |> add_optional_params(optional_params, opts)
-    |> Enum.into([])
-    |> (&Connection.request(connection, &1)).()
-    |> decode(%GoogleApi.Speech.V1.Model.Empty{})
-  end
-
-  @doc """
-  Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn&#39;t support this method, it returns &#x60;google.rpc.Code.UNIMPLEMENTED&#x60;.
-
-  ## Parameters
-
-  - connection (GoogleApi.Speech.V1.Connection): Connection to server
-  - name (String): The name of the operation resource to be deleted.
-  - opts (KeywordList): [optional] Optional parameters
-    - :upload_protocol (String): Upload protocol for media (e.g. \&quot;raw\&quot;, \&quot;multipart\&quot;).
-    - :pretty_print (Boolean): Returns response with indentations and line breaks.
-    - :fields (String): Selector specifying which fields to include in a partial response.
-    - :upload_type (String): Legacy upload protocol for media (e.g. \&quot;media\&quot;, \&quot;multipart\&quot;).
-    - :__/xgafv (String): V1 error format.
-    - :callback (String): JSONP
-    - :alt (String): Data format for response.
-    - :key (String): API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
-    - :access_token (String): OAuth access token.
-    - :quota_user (String): Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
-    - :pp (Boolean): Pretty-print response.
-    - :bearer_token (String): OAuth bearer token.
-    - :oauth_token (String): OAuth 2.0 token for the current user.
-
-  ## Returns
-
-  {:ok, %GoogleApi.Speech.V1.Model.Empty{}} on success
-  {:error, info} on failure
-  """
-  @spec speech_operations_delete(Tesla.Env.client, String.t, keyword()) :: {:ok, GoogleApi.Speech.V1.Model.Empty.t} | {:error, Tesla.Env.t}
-  def speech_operations_delete(connection, name, opts \\ []) do
-    optional_params = %{
-      :"upload_protocol" => :query,
-      :"prettyPrint" => :query,
-      :"fields" => :query,
-      :"uploadType" => :query,
-      :"$.xgafv" => :query,
-      :"callback" => :query,
-      :"alt" => :query,
-      :"key" => :query,
-      :"access_token" => :query,
-      :"quotaUser" => :query,
-      :"pp" => :query,
-      :"bearer_token" => :query,
-      :"oauth_token" => :query
-    }
-    %{}
-    |> method(:delete)
-    |> url("/v1/operations/{+name}", %{
-         "name" => URI.encode_www_form(name)
-       })
-    |> add_optional_params(optional_params, opts)
-    |> Enum.into([])
-    |> (&Connection.request(connection, &1)).()
-    |> decode(%GoogleApi.Speech.V1.Model.Empty{})
-  end
-
-  @doc """
   Gets the latest state of a long-running operation.  Clients can use this method to poll the operation result at intervals as recommended by the API service.
 
   ## Parameters
 
   - connection (GoogleApi.Speech.V1.Connection): Connection to server
-  - name (String): The name of the operation resource.
+  - name (String.t): The name of the operation resource.
   - opts (KeywordList): [optional] Optional parameters
-    - :upload_protocol (String): Upload protocol for media (e.g. \&quot;raw\&quot;, \&quot;multipart\&quot;).
-    - :pretty_print (Boolean): Returns response with indentations and line breaks.
-    - :fields (String): Selector specifying which fields to include in a partial response.
-    - :upload_type (String): Legacy upload protocol for media (e.g. \&quot;media\&quot;, \&quot;multipart\&quot;).
-    - :__/xgafv (String): V1 error format.
-    - :callback (String): JSONP
-    - :alt (String): Data format for response.
-    - :key (String): API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
-    - :access_token (String): OAuth access token.
-    - :quota_user (String): Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
-    - :pp (Boolean): Pretty-print response.
-    - :bearer_token (String): OAuth bearer token.
-    - :oauth_token (String): OAuth 2.0 token for the current user.
+    - :fields (String.t): Selector specifying which fields to include in a partial response.
+    - :uploadType (String.t): Legacy upload protocol for media (e.g. \&quot;media\&quot;, \&quot;multipart\&quot;).
+    - :callback (String.t): JSONP
+    - :$.xgafv (String.t): V1 error format.
+    - :alt (String.t): Data format for response.
+    - :access_token (String.t): OAuth access token.
+    - :key (String.t): API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - :quotaUser (String.t): Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - :pp (boolean()): Pretty-print response.
+    - :bearer_token (String.t): OAuth bearer token.
+    - :oauth_token (String.t): OAuth 2.0 token for the current user.
+    - :upload_protocol (String.t): Upload protocol for media (e.g. \&quot;raw\&quot;, \&quot;multipart\&quot;).
+    - :prettyPrint (boolean()): Returns response with indentations and line breaks.
 
   ## Returns
 
@@ -168,88 +56,28 @@ defmodule GoogleApi.Speech.V1.Api.Operations do
   @spec speech_operations_get(Tesla.Env.client, String.t, keyword()) :: {:ok, GoogleApi.Speech.V1.Model.Operation.t} | {:error, Tesla.Env.t}
   def speech_operations_get(connection, name, opts \\ []) do
     optional_params = %{
-      :"upload_protocol" => :query,
-      :"prettyPrint" => :query,
       :"fields" => :query,
       :"uploadType" => :query,
-      :"$.xgafv" => :query,
       :"callback" => :query,
+      :"$.xgafv" => :query,
       :"alt" => :query,
-      :"key" => :query,
       :"access_token" => :query,
+      :"key" => :query,
       :"quotaUser" => :query,
       :"pp" => :query,
       :"bearer_token" => :query,
-      :"oauth_token" => :query
+      :"oauth_token" => :query,
+      :"upload_protocol" => :query,
+      :"prettyPrint" => :query
     }
     %{}
     |> method(:get)
-    |> url("/v1/operations/{+name}", %{
+    |> url("/v1p1beta1/operations/{+name}", %{
          "name" => URI.encode_www_form(name)
        })
     |> add_optional_params(optional_params, opts)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
     |> decode(%GoogleApi.Speech.V1.Model.Operation{})
-  end
-
-  @doc """
-  Lists operations that match the specified filter in the request. If the server doesn&#39;t support this method, it returns &#x60;UNIMPLEMENTED&#x60;.  NOTE: the &#x60;name&#x60; binding allows API services to override the binding to use different resource name schemes, such as &#x60;users/*/operations&#x60;. To override the binding, API services can add a binding such as &#x60;\&quot;/v1/{name&#x3D;users/*}/operations\&quot;&#x60; to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.
-
-  ## Parameters
-
-  - connection (GoogleApi.Speech.V1.Connection): Connection to server
-  - opts (KeywordList): [optional] Optional parameters
-    - :upload_protocol (String): Upload protocol for media (e.g. \&quot;raw\&quot;, \&quot;multipart\&quot;).
-    - :pretty_print (Boolean): Returns response with indentations and line breaks.
-    - :fields (String): Selector specifying which fields to include in a partial response.
-    - :upload_type (String): Legacy upload protocol for media (e.g. \&quot;media\&quot;, \&quot;multipart\&quot;).
-    - :__/xgafv (String): V1 error format.
-    - :callback (String): JSONP
-    - :alt (String): Data format for response.
-    - :key (String): API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
-    - :access_token (String): OAuth access token.
-    - :quota_user (String): Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
-    - :pp (Boolean): Pretty-print response.
-    - :bearer_token (String): OAuth bearer token.
-    - :oauth_token (String): OAuth 2.0 token for the current user.
-    - :page_token (String): The standard list page token.
-    - :name (String): The name of the operation&#39;s parent resource.
-    - :page_size (Integer): The standard list page size.
-    - :filter (String): The standard list filter.
-
-  ## Returns
-
-  {:ok, %GoogleApi.Speech.V1.Model.ListOperationsResponse{}} on success
-  {:error, info} on failure
-  """
-  @spec speech_operations_list(Tesla.Env.client, keyword()) :: {:ok, GoogleApi.Speech.V1.Model.ListOperationsResponse.t} | {:error, Tesla.Env.t}
-  def speech_operations_list(connection, opts \\ []) do
-    optional_params = %{
-      :"upload_protocol" => :query,
-      :"prettyPrint" => :query,
-      :"fields" => :query,
-      :"uploadType" => :query,
-      :"$.xgafv" => :query,
-      :"callback" => :query,
-      :"alt" => :query,
-      :"key" => :query,
-      :"access_token" => :query,
-      :"quotaUser" => :query,
-      :"pp" => :query,
-      :"bearer_token" => :query,
-      :"oauth_token" => :query,
-      :"pageToken" => :query,
-      :"name" => :query,
-      :"pageSize" => :query,
-      :"filter" => :query
-    }
-    %{}
-    |> method(:get)
-    |> url("/v1/operations")
-    |> add_optional_params(optional_params, opts)
-    |> Enum.into([])
-    |> (&Connection.request(connection, &1)).()
-    |> decode(%GoogleApi.Speech.V1.Model.ListOperationsResponse{})
   end
 end

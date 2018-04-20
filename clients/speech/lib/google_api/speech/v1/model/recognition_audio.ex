@@ -23,8 +23,8 @@ defmodule GoogleApi.Speech.V1.Model.RecognitionAudio do
 
   ## Attributes
 
-  - content (String): The audio data bytes encoded as specified in &#x60;RecognitionConfig&#x60;. Note: as with all bytes fields, protobuffers use a pure binary representation, whereas JSON representations use base64. Defaults to: `null`.
-  - uri (String): URI that points to a file that contains audio data bytes as specified in &#x60;RecognitionConfig&#x60;. Currently, only Google Cloud Storage URIs are supported, which must be specified in the following format: &#x60;gs://bucket_name/object_name&#x60; (other URI formats return google.rpc.Code.INVALID_ARGUMENT). For more information, see [Request URIs](https://cloud.google.com/storage/docs/reference-uris). Defaults to: `null`.
+  - content (binary()): The audio data bytes encoded as specified in &#x60;RecognitionConfig&#x60;. Note: as with all bytes fields, protobuffers use a pure binary representation, whereas JSON representations use base64. Defaults to: `null`.
+  - uri (String.t): URI that points to a file that contains audio data bytes as specified in &#x60;RecognitionConfig&#x60;. Currently, only Google Cloud Storage URIs are supported, which must be specified in the following format: &#x60;gs://bucket_name/object_name&#x60; (other URI formats return google.rpc.Code.INVALID_ARGUMENT). For more information, see [Request URIs](https://cloud.google.com/storage/docs/reference-uris). Defaults to: `null`.
   """
 
   defstruct [

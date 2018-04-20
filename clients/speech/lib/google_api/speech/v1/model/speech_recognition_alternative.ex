@@ -23,9 +23,9 @@ defmodule GoogleApi.Speech.V1.Model.SpeechRecognitionAlternative do
 
   ## Attributes
 
-  - confidence (Float): *Output-only* The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is typically provided only for the top hypothesis, and only for &#x60;is_final&#x3D;true&#x60; results. Clients should not rely on the &#x60;confidence&#x60; field as it is not guaranteed to be accurate or consistent. The default of 0.0 is a sentinel value indicating &#x60;confidence&#x60; was not set. Defaults to: `null`.
-  - transcript (String): *Output-only* Transcript text representing the words that the user spoke. Defaults to: `null`.
-  - words (List[WordInfo]): *Output-only* A list of word-specific information for each recognized word. Defaults to: `null`.
+  - confidence (float()): Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated greater likelihood that the recognized words are correct. This field is set only for the top alternative of a non-streaming result or, of a streaming result where &#x60;is_final&#x3D;true&#x60;. This field is not guaranteed to be accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value indicating &#x60;confidence&#x60; was not set. Defaults to: `null`.
+  - transcript (String.t): Output only. Transcript text representing the words that the user spoke. Defaults to: `null`.
+  - words ([WordInfo]): Output only. A list of word-specific information for each recognized word. Defaults to: `null`.
   """
 
   defstruct [

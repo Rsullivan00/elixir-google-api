@@ -19,13 +19,13 @@
 
 defmodule GoogleApi.Speech.V1.Model.WordInfo do
   @moduledoc """
-  Word-specific information for recognized words. Word information is only included in the response when certain request parameters are set, such as &#x60;enable_word_time_offsets&#x60;.
+  Word-specific information for recognized words.
 
   ## Attributes
 
-  - endTime (String): *Output-only* Time offset relative to the beginning of the audio, and corresponding to the end of the spoken word. This field is only set if &#x60;enable_word_time_offsets&#x3D;true&#x60; and only in the top hypothesis. This is an experimental feature and the accuracy of the time offset can vary. Defaults to: `null`.
-  - startTime (String): *Output-only* Time offset relative to the beginning of the audio, and corresponding to the start of the spoken word. This field is only set if &#x60;enable_word_time_offsets&#x3D;true&#x60; and only in the top hypothesis. This is an experimental feature and the accuracy of the time offset can vary. Defaults to: `null`.
-  - word (String): *Output-only* The word corresponding to this set of information. Defaults to: `null`.
+  - endTime (String.t): Output only. Time offset relative to the beginning of the audio, and corresponding to the end of the spoken word. This field is only set if &#x60;enable_word_time_offsets&#x3D;true&#x60; and only in the top hypothesis. This is an experimental feature and the accuracy of the time offset can vary. Defaults to: `null`.
+  - startTime (String.t): Output only. Time offset relative to the beginning of the audio, and corresponding to the start of the spoken word. This field is only set if &#x60;enable_word_time_offsets&#x3D;true&#x60; and only in the top hypothesis. This is an experimental feature and the accuracy of the time offset can vary. Defaults to: `null`.
+  - word (String.t): Output only. The word corresponding to this set of information. Defaults to: `null`.
   """
 
   defstruct [
