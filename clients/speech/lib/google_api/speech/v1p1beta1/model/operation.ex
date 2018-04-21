@@ -43,14 +43,7 @@ defimpl Poison.Decoder, for: GoogleApi.Speech.V1p1beta1.Model.Operation do
   import GoogleApi.Speech.V1p1beta1.Deserializer
   def decode(value, options) do
     value
-    
     |> deserialize(:"error", :struct, GoogleApi.Speech.V1p1beta1.Model.Status, options)
-    
-    |> deserialize(:"metadata", :struct, GoogleApi.Speech.V1p1beta1.Model.Object, options)
-    
-    
-    |> deserialize(:"response", :struct, GoogleApi.Speech.V1p1beta1.Model.Object, options)
-    
   end
 end
 
