@@ -497,6 +497,11 @@
   {
     "version": "v1",
     "name": "Speech",
+    "url": "https://speech.googleapis.com/$discovery/rest?version=v1"
+  },
+  {
+    "version": "v1p1beta1",
+    "name": "Speech",
     "url": "https://speech.googleapis.com/$discovery/rest?version=v1p1beta1"
   },
   {
