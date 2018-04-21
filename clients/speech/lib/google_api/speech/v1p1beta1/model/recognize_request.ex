@@ -17,31 +17,36 @@
 # https://github.com/swagger-api/swagger-codegen.git
 # Do not edit the class manually.
 
-defmodule GoogleApi.Speech.V1.Model.RecognizeResponse do
+defmodule GoogleApi.Speech.V1p1beta1.Model.RecognizeRequest do
   @moduledoc """
-  The only message returned to the client by the &#x60;Recognize&#x60; method. It contains the result as zero or more sequential &#x60;SpeechRecognitionResult&#x60; messages.
+  The top-level message sent by the client for the &#x60;Recognize&#x60; method.
 
   ## Attributes
 
-  - results (List[SpeechRecognitionResult]): *Output-only* Sequential list of transcription results corresponding to sequential portions of audio. Defaults to: `null`.
+  - audio (RecognitionAudio): *Required* The audio data to be recognized. Defaults to: `null`.
+  - config (RecognitionConfig): *Required* Provides information to the recognizer that specifies how to process the request. Defaults to: `null`.
   """
 
   defstruct [
-    :"results"
+    :"audio",
+    :"config"
   ]
 end
 
-defimpl Poison.Decoder, for: GoogleApi.Speech.V1.Model.RecognizeResponse do
-  import GoogleApi.Speech.V1.Deserializer
+defimpl Poison.Decoder, for: GoogleApi.Speech.V1p1beta1.Model.RecognizeRequest do
+  import GoogleApi.Speech.V1p1beta1.Deserializer
   def decode(value, options) do
     value
-    |> deserialize(:"results", :list, GoogleApi.Speech.V1.Model.SpeechRecognitionResult, options)
+    |> deserialize(:"audio", :struct, GoogleApi.Speech.V1p1beta1.Model.RecognitionAudio, options)
+    
+    |> deserialize(:"config", :struct, GoogleApi.Speech.V1p1beta1.Model.RecognitionConfig, options)
+    
   end
 end
 
-defimpl Poison.Encoder, for: GoogleApi.Speech.V1.Model.RecognizeResponse do
+defimpl Poison.Encoder, for: GoogleApi.Speech.V1p1beta1.Model.RecognizeRequest do
   def encode(value, options) do
-    GoogleApi.Speech.V1.Deserializer.serialize_non_nil(value, options)
+    GoogleApi.Speech.V1p1beta1.Deserializer.serialize_non_nil(value, options)
   end
 end
 

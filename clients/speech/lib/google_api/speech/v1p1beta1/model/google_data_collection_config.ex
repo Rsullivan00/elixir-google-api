@@ -17,29 +17,30 @@
 # https://github.com/swagger-api/swagger-codegen.git
 # Do not edit the class manually.
 
-defmodule GoogleApi.Speech.V1.Model.SpeechContext do
+defmodule GoogleApi.Speech.V1p1beta1.Model.GoogleDataCollectionConfig do
   @moduledoc """
-  Provides \&quot;hints\&quot; to the speech recognizer to favor specific words and phrases in the results.
+  Google data collection opt-in settings.
 
   ## Attributes
 
-  - phrases (List[String]): *Optional* A list of strings containing words and phrases \&quot;hints\&quot; so that the speech recognition is more likely to recognize them. This can be used to improve the accuracy for specific words and phrases, for example, if specific commands are typically spoken by the user. This can also be used to add additional words to the vocabulary of the recognizer. See [usage limits](https://cloud.google.com/speech/limits#content). Defaults to: `null`.
+  - loggingConsentState (String.t):  Defaults to: `null`.
+    - Enum - one of [ENABLED, DISABLED]
   """
 
   defstruct [
-    :"phrases"
+    :"loggingConsentState"
   ]
 end
 
-defimpl Poison.Decoder, for: GoogleApi.Speech.V1.Model.SpeechContext do
+defimpl Poison.Decoder, for: GoogleApi.Speech.V1p1beta1.Model.GoogleDataCollectionConfig do
   def decode(value, _options) do
     value
   end
 end
 
-defimpl Poison.Encoder, for: GoogleApi.Speech.V1.Model.SpeechContext do
+defimpl Poison.Encoder, for: GoogleApi.Speech.V1p1beta1.Model.GoogleDataCollectionConfig do
   def encode(value, options) do
-    GoogleApi.Speech.V1.Deserializer.serialize_non_nil(value, options)
+    GoogleApi.Speech.V1p1beta1.Deserializer.serialize_non_nil(value, options)
   end
 end
 

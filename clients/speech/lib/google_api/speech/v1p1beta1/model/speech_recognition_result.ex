@@ -17,31 +17,32 @@
 # https://github.com/swagger-api/swagger-codegen.git
 # Do not edit the class manually.
 
-defmodule GoogleApi.Speech.V1.Model.RecognizeResponse do
+defmodule GoogleApi.Speech.V1p1beta1.Model.SpeechRecognitionResult do
   @moduledoc """
-  The only message returned to the client by the &#x60;Recognize&#x60; method. It contains the result as zero or more sequential &#x60;SpeechRecognitionResult&#x60; messages.
+  A speech recognition result corresponding to a portion of the audio.
 
   ## Attributes
 
-  - results (List[SpeechRecognitionResult]): *Output-only* Sequential list of transcription results corresponding to sequential portions of audio. Defaults to: `null`.
+  - alternatives ([SpeechRecognitionAlternative]): Output only. May contain one or more recognition hypotheses (up to the maximum specified in &#x60;max_alternatives&#x60;). These alternatives are ordered in terms of accuracy, with the top (first) alternative being the most probable, as ranked by the recognizer. Defaults to: `null`.
   """
 
   defstruct [
-    :"results"
+    :"alternatives"
   ]
 end
 
-defimpl Poison.Decoder, for: GoogleApi.Speech.V1.Model.RecognizeResponse do
-  import GoogleApi.Speech.V1.Deserializer
+defimpl Poison.Decoder, for: GoogleApi.Speech.V1p1beta1.Model.SpeechRecognitionResult do
+  import GoogleApi.Speech.V1p1beta1.Deserializer
   def decode(value, options) do
     value
-    |> deserialize(:"results", :list, GoogleApi.Speech.V1.Model.SpeechRecognitionResult, options)
+    |> deserialize(:"alternatives", :list, GoogleApi.Speech.V1p1beta1.Model.SpeechRecognitionAlternative, options)
+    
   end
 end
 
-defimpl Poison.Encoder, for: GoogleApi.Speech.V1.Model.RecognizeResponse do
+defimpl Poison.Encoder, for: GoogleApi.Speech.V1p1beta1.Model.SpeechRecognitionResult do
   def encode(value, options) do
-    GoogleApi.Speech.V1.Deserializer.serialize_non_nil(value, options)
+    GoogleApi.Speech.V1p1beta1.Deserializer.serialize_non_nil(value, options)
   end
 end
 

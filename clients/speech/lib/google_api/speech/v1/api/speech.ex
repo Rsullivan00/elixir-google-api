@@ -33,19 +33,19 @@ defmodule GoogleApi.Speech.V1.Api.Speech do
 
   - connection (GoogleApi.Speech.V1.Connection): Connection to server
   - opts (KeywordList): [optional] Optional parameters
-    - :fields (String.t): Selector specifying which fields to include in a partial response.
-    - :uploadType (String.t): Legacy upload protocol for media (e.g. \&quot;media\&quot;, \&quot;multipart\&quot;).
-    - :callback (String.t): JSONP
-    - :$.xgafv (String.t): V1 error format.
-    - :alt (String.t): Data format for response.
-    - :access_token (String.t): OAuth access token.
-    - :key (String.t): API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
-    - :quotaUser (String.t): Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
-    - :pp (boolean()): Pretty-print response.
-    - :bearer_token (String.t): OAuth bearer token.
-    - :oauth_token (String.t): OAuth 2.0 token for the current user.
-    - :upload_protocol (String.t): Upload protocol for media (e.g. \&quot;raw\&quot;, \&quot;multipart\&quot;).
-    - :prettyPrint (boolean()): Returns response with indentations and line breaks.
+    - :upload_protocol (String): Upload protocol for media (e.g. \&quot;raw\&quot;, \&quot;multipart\&quot;).
+    - :pretty_print (Boolean): Returns response with indentations and line breaks.
+    - :fields (String): Selector specifying which fields to include in a partial response.
+    - :upload_type (String): Legacy upload protocol for media (e.g. \&quot;media\&quot;, \&quot;multipart\&quot;).
+    - :__/xgafv (String): V1 error format.
+    - :callback (String): JSONP
+    - :alt (String): Data format for response.
+    - :key (String): API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - :access_token (String): OAuth access token.
+    - :quota_user (String): Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - :pp (Boolean): Pretty-print response.
+    - :bearer_token (String): OAuth bearer token.
+    - :oauth_token (String): OAuth 2.0 token for the current user.
     - :body (LongRunningRecognizeRequest): 
 
   ## Returns
@@ -56,24 +56,24 @@ defmodule GoogleApi.Speech.V1.Api.Speech do
   @spec speech_speech_longrunningrecognize(Tesla.Env.client, keyword()) :: {:ok, GoogleApi.Speech.V1.Model.Operation.t} | {:error, Tesla.Env.t}
   def speech_speech_longrunningrecognize(connection, opts \\ []) do
     optional_params = %{
+      :"upload_protocol" => :query,
+      :"prettyPrint" => :query,
       :"fields" => :query,
       :"uploadType" => :query,
-      :"callback" => :query,
       :"$.xgafv" => :query,
+      :"callback" => :query,
       :"alt" => :query,
-      :"access_token" => :query,
       :"key" => :query,
+      :"access_token" => :query,
       :"quotaUser" => :query,
       :"pp" => :query,
       :"bearer_token" => :query,
       :"oauth_token" => :query,
-      :"upload_protocol" => :query,
-      :"prettyPrint" => :query,
       :"body" => :body
     }
     %{}
     |> method(:post)
-    |> url("/v1p1beta1/speech:longrunningrecognize")
+    |> url("/v1/speech:longrunningrecognize")
     |> add_optional_params(optional_params, opts)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
@@ -87,19 +87,19 @@ defmodule GoogleApi.Speech.V1.Api.Speech do
 
   - connection (GoogleApi.Speech.V1.Connection): Connection to server
   - opts (KeywordList): [optional] Optional parameters
-    - :fields (String.t): Selector specifying which fields to include in a partial response.
-    - :uploadType (String.t): Legacy upload protocol for media (e.g. \&quot;media\&quot;, \&quot;multipart\&quot;).
-    - :callback (String.t): JSONP
-    - :$.xgafv (String.t): V1 error format.
-    - :alt (String.t): Data format for response.
-    - :access_token (String.t): OAuth access token.
-    - :key (String.t): API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
-    - :quotaUser (String.t): Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
-    - :pp (boolean()): Pretty-print response.
-    - :bearer_token (String.t): OAuth bearer token.
-    - :oauth_token (String.t): OAuth 2.0 token for the current user.
-    - :upload_protocol (String.t): Upload protocol for media (e.g. \&quot;raw\&quot;, \&quot;multipart\&quot;).
-    - :prettyPrint (boolean()): Returns response with indentations and line breaks.
+    - :upload_protocol (String): Upload protocol for media (e.g. \&quot;raw\&quot;, \&quot;multipart\&quot;).
+    - :pretty_print (Boolean): Returns response with indentations and line breaks.
+    - :fields (String): Selector specifying which fields to include in a partial response.
+    - :upload_type (String): Legacy upload protocol for media (e.g. \&quot;media\&quot;, \&quot;multipart\&quot;).
+    - :__/xgafv (String): V1 error format.
+    - :callback (String): JSONP
+    - :alt (String): Data format for response.
+    - :key (String): API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.
+    - :access_token (String): OAuth access token.
+    - :quota_user (String): Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.
+    - :pp (Boolean): Pretty-print response.
+    - :bearer_token (String): OAuth bearer token.
+    - :oauth_token (String): OAuth 2.0 token for the current user.
     - :body (RecognizeRequest): 
 
   ## Returns
@@ -110,24 +110,24 @@ defmodule GoogleApi.Speech.V1.Api.Speech do
   @spec speech_speech_recognize(Tesla.Env.client, keyword()) :: {:ok, GoogleApi.Speech.V1.Model.RecognizeResponse.t} | {:error, Tesla.Env.t}
   def speech_speech_recognize(connection, opts \\ []) do
     optional_params = %{
+      :"upload_protocol" => :query,
+      :"prettyPrint" => :query,
       :"fields" => :query,
       :"uploadType" => :query,
-      :"callback" => :query,
       :"$.xgafv" => :query,
+      :"callback" => :query,
       :"alt" => :query,
-      :"access_token" => :query,
       :"key" => :query,
+      :"access_token" => :query,
       :"quotaUser" => :query,
       :"pp" => :query,
       :"bearer_token" => :query,
       :"oauth_token" => :query,
-      :"upload_protocol" => :query,
-      :"prettyPrint" => :query,
       :"body" => :body
     }
     %{}
     |> method(:post)
-    |> url("/v1p1beta1/speech:recognize")
+    |> url("/v1/speech:recognize")
     |> add_optional_params(optional_params, opts)
     |> Enum.into([])
     |> (&Connection.request(connection, &1)).()
